@@ -10398,7 +10398,7 @@ body.modal-open {
 }
 @media (max-width: 1367px) {
   .chart-statistic-box .chart-txt {
-    width: 270px;
+    width: 320px;
   }
   .chart-statistic-box .chart-container {
     margin-left: -170px;
