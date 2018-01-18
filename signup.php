@@ -64,6 +64,7 @@ $msg=$msg."Userid Already Exists. Please Try Another One.<BR>";
 $status= "NOTOK";
 }
 
+/*
 $rrr=mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE mobile = '$mobile'");
 $r3 = mysqli_fetch_row($rrr);
 $nr3 = $r3[0];
@@ -71,7 +72,9 @@ if($nr3==1){
 $msg=$msg."Mobile Number Already Registered.<BR>";
 $status= "NOTOK";
 }
+*/
 
+/*
 $remail=mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE email = '$email'");
 $re = mysqli_fetch_row($remail);
 $nremail = $re[0];
@@ -79,6 +82,7 @@ if($nremail==1){
 $msg=$msg."E-Mail Id Already Registered.<BR>";
 $status= "NOTOK";
 }
+*/
 
 $result = mysqli_query($con,"SELECT count(*) FROM  affiliateuser where username = '$ref'");
 $row = mysqli_fetch_row($result);

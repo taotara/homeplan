@@ -85,7 +85,6 @@ echo "<li>
 									<div class='media-body'>
 										<div><a href='#'>$row2[createdtime]</a></div>
 									 <small class='text-muted'>Payment Amount : $row2[payment_amount]</small> <br></div>
-								</div>
 							</li> ";
 
 //echo $row['fname'] . " " . $row['email'];

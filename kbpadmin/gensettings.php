@@ -97,51 +97,7 @@ if (!isset($_SESSION['adminidusername'])) {
                         <input type="email" value="<?php print $email ?>" class="form-control" placeholder="For Account information purpose." name="coemail" >
                       </div>
 
-
-					  <div class="form-group">
-					  <label>Enable Paypal Gateway </label>
-					  <select name="alwdpaypal" required>
-					  <option value=''>Select</option>
-						<option value='1'>Yes</option>
-						<option value='0'>No</option>
-
-						</select>
-					  <br/>
-                        <label>Paypal Email</label>
-                        <input type="email" value="<?php print $pid ?>" class="form-control" placeholder="To Receive Payments." name="payemail" >
-
-                      </div>
-
-					  <div class="form-group">
-					  <label>Enable Payza Gateway </label>
-					  <select name="alwdpayza" required>
-					  <option value=''>Select</option>
-						<option value='1'>Yes</option>
-						<option value='0'>No</option>
-
-						</select>
-					  <br/>
-                        <label>Payza Merchant ID</label>
-                        <input type="text" value="<?php print $payzaid ?>" class="form-control" placeholder="To Receive Payments." name="payzaid" >
-                      </div>
-
-					  <div class="form-group">
-					  <label>Enable Solid Trust Pay Gateway </label>
-					  <select name="alwdsolid" required>
-					  <option value=''>Select</option>
-						<option value='1'>Yes</option>
-						<option value='0'>No</option>
-						Please follow setup instructions on image given in package named as : how-to-setup-solidtrustpay-ipn.png
-						</select>
-					  <br/>
-                        <label>SolidTrustPay Merchand Id</label>
-                        <input type="text" value="<?php print $solidtrustid ?>" class="form-control" placeholder="To Receive Payments." name="solidid" >
-                      </div>
-
-					  <div class="form-group">
-                        <label>SolidTrustPay Button Password (Secondary Password)</label>
-                        <input type="text" value="<?php print $solidbuttonid ?>" class="form-control" placeholder="To Receive Payments." name="solidbuttonid" >
-                      </div>
+            
 					  <div class="form-group">
 					  <label>Enable Cash on delivery Pay Gateway </label>
 					  <select name="alwdcash" required>

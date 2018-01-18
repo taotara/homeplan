@@ -117,12 +117,12 @@ if (!isset($_SESSION['adminidusername'])) {
                       </div>
                       <div class="chart-txt-top">
                           <?php
-                              $result = mysqli_query($con,"SELECT count(*) FROM  affiliateuser where level = 2 and active = 1");
+                              $result = mysqli_query($con,"SELECT count(*) FROM  affiliateuser where level = 2");
                               $row = mysqli_fetch_row($result);
                               $totalusers = $row[0];
                           ?>
                           <p><span class="number"><?php print $totalusers ?></span></p>
-                          <p class="caption">Total Users</p>
+                          <p class="caption">Total Registered Users</p>
                       </div>
                   </div>
 
@@ -139,7 +139,7 @@ if (!isset($_SESSION['adminidusername'])) {
                           ?>
                           <div>
                               <div class="number"><?php print $totalactiveusers ?></div>
-                              <div class="caption"><div>Total Active Users</div></div>
+                              <div class="caption"><div>Total Paid/Active Users</div></div>
                           </div>
                       </article>
                   </div><!--.col-->
@@ -152,28 +152,33 @@ if (!isset($_SESSION['adminidusername'])) {
                           ?>
                           <div>
                               <div class="number"><?php print $totalinactiveusers ?></div>
-                              <div class="caption"><div>Total Inactive Users</div></div>
+                              <div class="caption"><div>Total Unpaid/Inactive Users</div></div>
                           </div>
                       </article>
                   </div><!--.col-->
                   <div class="col-sm-6">
-                      <article class="statistic-box yellow">
+                      <article class="statistic-box red">
                           <?php
                               $result = mysqli_query($con,"SELECT COUNT(*) FROM `payments` WHERE payment_status = 0");
                               $row = mysqli_fetch_row($result);
                               $pendingpayment = $row[0];
                           ?>
                           <div>
-                              <div class="number">PENDING PAYMENT</div>
-                              <div class="caption"><div><?php print $pendingpayment ?></div></div>
+                              <div class="number"><?php print $pendingpayment ?></div>
+                              <div class="caption"><div>Pending withdrawal requests</div></div>
                           </div>
                       </article>
                   </div><!--.col-->
-                  <!-- <div class="col-sm-6">
+                  <div class="col-sm-6">
                       <article class="statistic-box purple">
+                          <?php
+                              $result = mysqli_query($con,"SELECT COUNT(*) FROM `affiliateuser` WHERE doj = date(now())");
+                              $row = mysqli_fetch_row($result);
+                              $totaRegisteredToday = $row[0];
+                          ?>
                           <div>
-                              <div class="number">DATE</div>
-                              <div class="caption"><div>Date join</div></div>
+                              <div class="number"><?php print $totaRegisteredToday ?></div>
+                              <div class="caption"><div>Total registered users today</div></div>
                           </div>
                       </article>
                   </div><!--.col-->
@@ -181,7 +186,80 @@ if (!isset($_SESSION['adminidusername'])) {
               </div><!--.row-->
           </div><!--.col-->
       </div><!--.row-->
-      <!-- <div class="row">
+      <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-sm-4">
+                    <article class="statistic-box purple">
+                        <?php
+                            $result = mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE WEEK(doj) = WEEK(CURDATE())");
+                            $row = mysqli_fetch_row($result);
+                            $totalreguseredweek = $row[0];
+                        ?>
+                        <div>
+                            <div class="number"><?php print $totalreguseredweek ?></div>
+                            <div class="caption"><div>Total Registered Users This Week</div></div>
+                        </div>
+                    </article>
+                </div><!--.col-->
+                <div class="col-sm-4">
+                    <article class="statistic-box purple">
+                        <?php
+                            $result = mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE MONTH(doj) = MONTH(CURDATE())");
+                            $row = mysqli_fetch_row($result);
+                            $totalregisteredmonth = $row[0];
+                        ?>
+                        <div>
+                            <div class="number"><?php print $totalregisteredmonth ?></div>
+                            <div class="caption"><div>Total Registered Users This Month</div></div>
+                        </div>
+                    </article>
+                </div><!--.col-->
+                <div class="col-sm-4">
+                    <article class="statistic-box purple">
+                        <?php
+                            $result = mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE YEAR(doj) = YEAR(CURDATE())");
+                            $row = mysqli_fetch_row($result);
+                            $totalregisteredyear = $row[0];
+                        ?>
+                        <div>
+                            <div class="number"><?php print $totalregisteredyear ?></div>
+                            <div class="caption"><div>Total Registered Users This Year</div></div>
+                        </div>
+                    </article>
+                </div><!--.col-->
+
+                <div class="col-sm-6">
+                    <article class="statistic-box yellow">
+                        <?php
+                            $result = mysqli_query($con,"SELECT SUM(payment_amount) FROM `payments`");
+                            $row = mysqli_fetch_row($result);
+                            $totalwithdrawn = $row[0];
+                        ?>
+                        <div>
+                            <div class="number"><span class="unit">NGN</span><?php print $totalwithdrawn ?></div>
+                            <div class="caption"><div>Sum Total Ammount Withdrawn by Members</div></div>
+                        </div>
+                    </article>
+                </div><!--.col-->
+                <div class="col-sm-6">
+                    <article class="statistic-box yellow">
+                        <?php
+                            $result = mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE YEAR(doj) = YEAR(CURDATE())");
+                            $row = mysqli_fetch_row($result);
+                            $totalregisteredyear = $row[0];
+                        ?>
+                        <div>
+                            <div class="number"><?php print $totalregisteredyear ?></div>
+                            <div class="caption"><div>Balace</div></div>
+                        </div>
+                    </article>
+                </div><!--.col-->
+
+            </div><!--.row-->
+        </div><!--.col-->
+      </div>
+      <!--<div class="row">
           <div class="col-lg-4">
               <section class="card">
                   <header class="card-header">

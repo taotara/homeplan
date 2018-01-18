@@ -1,6 +1,6 @@
 <?php
 header( "refresh:2;url=payrequest.php" );
-include_once ("z_db.php");
+include_once ("../includes/connector.php");
 // Inialize session
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -10,7 +10,7 @@ if (!isset($_SESSION['adminidusername'])) {
 					window.location = 'index.php';
 				</script>
 			";
-			
+
 }
 $tomake= mysqli_real_escape_string($con,$_GET["payid"]);
 

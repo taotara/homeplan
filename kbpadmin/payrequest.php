@@ -43,8 +43,8 @@ if (!isset($_SESSION['adminidusername'])) {
 	?>
 	<!--.side-menu-->
   <div class="page-content">
-    <div class="container-fluid">\
-            <p><strong>Important Instructions </strong> <b>1.</b>Clicking "PAID" button wont redirect you to paypal website, it will only update the payment status. Kindly pay by opening the website separately. Please verify User's Referral status before making the payment.<b> 2. </b> Records are shown from newest to oldest.</p>
+    <div class="container-fluid">
+            <p><strong>Important Instructions </strong> <b>1.</b>Clicking "PAID" will update the payment status. Please verify User's Referral status before making the payment.<b> 2. </b> Records are shown from newest to oldest.</p>
           <section class="box-typical box-typical-padding">
                   <header class="card-header card-header-lg"> Users Payment Requests </header>
                   <div class="card-block">

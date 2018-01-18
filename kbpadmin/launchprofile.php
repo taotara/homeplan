@@ -1,5 +1,5 @@
 <?php
-include_once ("z_db.php");
+include_once ("../includes/connector.php");
 header( "refresh:1;url=users.php" );
 // Inialize session
 session_start();
@@ -10,21 +10,21 @@ if (!isset($_SESSION['adminidusername'])) {
 					window.location = 'index.php';
 				</script>
 			";
-			
+
 }
 $tomake= mysqli_real_escape_string($con,$_GET["username"]);
 
-$query="SELECT * FROM  affiliateuser where username='$tomake'"; 
- 
- 
+$query="SELECT * FROM  affiliateuser where username='$tomake'";
+
+
  $ri = mysqli_query($con,$query);
 while($li = mysqli_fetch_array($ri))
 {
-	
+
 	$lllaunch="$li[launch]";
-	
+
 	}
-	
+
 if ($lllaunch==0)
 {
 
@@ -34,14 +34,14 @@ if ($r12 || $s12)
 {
 //print "<center>Profile Activated<br/>Redirecting in 2 seconds...</center>";
 
-$query="SELECT * FROM  affiliateuser where username='$tomake'"; 
- 
- 
+$query="SELECT * FROM  affiliateuser where username='$tomake'";
+
+
  $result = mysqli_query($con,$query);
 $i=0;
 while($row = mysqli_fetch_array($result))
 {
-	
+
 	$id="$row[Id]";
 	$username="$row[username]";
 	$fname="$row[fname]";
@@ -53,8 +53,8 @@ while($row = mysqli_fetch_array($result))
 	$ear="$row[tamount]";
 	$ref="$row[referedby]";
 	$pck="$row[pcktaken]";
-	
-	
+
+
 	if($active==1)
 	{
 	$status="Active/Paid";
@@ -67,8 +67,8 @@ while($row = mysqli_fetch_array($result))
 	{
 	$status="Unknown";
 	}
-	
-$qu="SELECT * FROM  packages where id = $pck"; 
+
+$qu="SELECT * FROM  packages where id = $pck";
 $re = mysqli_query($con,$qu);
 while($r = mysqli_fetch_array($re))
 {
@@ -98,15 +98,15 @@ while($r = mysqli_fetch_array($re))
 	$l19="$r[level19]";
 	$l20="$r[level20]";
 	$arr=array("$l1","$l2","$l3","$l4","$l5","$l6","$l7","$l8","$l9","$l10","$l11","$l12","$l13","$l14","$l15","$l16","$l17","$l18","$l19","$l20");
-	
-	
+
+
 	$temp=$ref;
 	$s102=mysqli_query($con,"UPDATE affiliateuser SET tamount=tamount+$pcksbonus WHERE username='$tomake'");
 	$r123=mysqli_query($con,"UPDATE affiliateuser SET tamount= tamount+$arr[0] WHERE username='$temp'");
 	for($i=1;$i<20;$i++)
 	{
-	
-	$qexe="SELECT * FROM  affiliateuser where username='$temp'"; 
+
+	$qexe="SELECT * FROM  affiliateuser where username='$temp'";
   $rexe = mysqli_query($con,$qexe);
 
 while($ress = mysqli_fetch_array($rexe))
@@ -116,7 +116,7 @@ while($ress = mysqli_fetch_array($rexe))
 	$r1234=mysqli_query($con,"UPDATE affiliateuser SET tamount= tamount+$arr[$i] WHERE username='$ans'");
 	$temp=$ans;
 	}
-	
+
   }
 
 }

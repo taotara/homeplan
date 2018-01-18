@@ -258,7 +258,7 @@ $numrows = $row[0];
 
 if($numrows==1) {
  ?>
-
+<!--
 <form action="https://solidtrustpay.com/handle.php" method="post">
 	 <input type="hidden" name="merchantAccount" value="<?php echo $solidtrust_id; ?>">
 	 <input type="hidden" name="sci_name" value="<?php echo $solidbuttonname; ?>">
@@ -269,6 +269,7 @@ if($numrows==1) {
 	 <input type="hidden" name="user1" value="<?php echo $aid ; ?>">
 	 <input type="submit" class="btn btn-rounded" value="Pay <?php print $pcur; print $pprice ?> Via SolidTrustPay" >
 </form>
+-->
 <?php
 
 }
