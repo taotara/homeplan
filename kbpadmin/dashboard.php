@@ -110,7 +110,7 @@ if (!isset($_SESSION['adminidusername'])) {
                   <div class="chart-txt">
                       <div class="chart-txt-top">
                           <p><span class="unit">NGN</span><span class="number"><?php print $totalpayments ?></span></p>
-                          <p class="caption">Total Payments Till Now</p>
+                          <p class="caption">Sum Total Amount Generated From Revenue </p>
                       </div>
                       <div class="vspace">
 
@@ -232,7 +232,7 @@ if (!isset($_SESSION['adminidusername'])) {
                 <div class="col-sm-6">
                     <article class="statistic-box yellow">
                         <?php
-                            $result = mysqli_query($con,"SELECT SUM(payment_amount) FROM `payments`");
+                            $result = mysqli_query($con,"SELECT IFNULL (SUM(payment_amount), 0) FROM `payments` WHERE payment_status = 1");
                             $row = mysqli_fetch_row($result);
                             $totalwithdrawn = $row[0];
                         ?>
@@ -245,13 +245,24 @@ if (!isset($_SESSION['adminidusername'])) {
                 <div class="col-sm-6">
                     <article class="statistic-box yellow">
                         <?php
-                            $result = mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE YEAR(doj) = YEAR(CURDATE())");
+                            $result = mysqli_query($con,"SELECT IFNULL (SUM(tamount), 0) FROM `affiliateuser` WHERE signupcode <> 0");
                             $row = mysqli_fetch_row($result);
-                            $totalregisteredyear = $row[0];
+                            $totalwalletbalancemembers = $row[0];
                         ?>
                         <div>
-                            <div class="number"><?php print $totalregisteredyear ?></div>
-                            <div class="caption"><div>Balace</div></div>
+                            <div class="number"><span class="unit">NGN</span><?php print $totalwalletbalancemembers ?></div>
+                            <div class="caption"><div>Sum Total Wallet Balance Of All Members </div></div>
+                        </div>
+                    </article>
+                </div><!--.col-->
+                <div class="col-sm-6">
+                    <article class="statistic-box yellow">
+                        <?php
+                            $balance = $totalpayments - ($totalwithdrawn + $totalwalletbalancemembers);
+                        ?>
+                        <div>
+                            <div class="number"><span class="unit">NGN</span><?php print $balance ?></div>
+                            <div class="caption"><div>Balance</div></div>
                         </div>
                     </article>
                 </div><!--.col-->

@@ -1,6 +1,6 @@
 <?php
 //header( "refresh:1;url=renewpaymentscod.php" );
-include_once ("z_db.php");
+include_once ("../includes/connector.php");
 // Inialize session
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -10,12 +10,12 @@ if (!isset($_SESSION['adminidusername'])) {
 					window.location = 'index.php';
 				</script>
 			";
-			
+
 }
 $userid= mysqli_real_escape_string($con,$_GET["username"]);
 
 
-$query="SELECT id,fname,email,doj,active,username,address,pcktaken,tamount,expiry FROM  affiliateuser where username = '$userid'"; 
+$query="SELECT id,fname,email,doj,active,username,address,pcktaken,tamount,expiry FROM  affiliateuser where username = '$userid'";
 $result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result))
@@ -28,7 +28,7 @@ while($row = mysqli_fetch_array($result))
  $pck="$row[pcktaken]";
  $ear="$row[tamount]";
  $expiry="$row[expiry]";
- 
+
 }
 
 $query ="SELECT * FROM paypalpayments WHERE orderid='$aid' and renew=1";
@@ -45,9 +45,9 @@ if ($stmt = mysqli_prepare($con, $query)) {
     /* close statement */
     mysqli_stmt_close($stmt);
 	}
-if($num==1)	
+if($num==1)
 {
-$query="SELECT id,fname,email,doj,active,username,address,pcktaken,tamount,expiry FROM  affiliateuser where username = '$userid'"; 
+$query="SELECT id,fname,email,doj,active,username,address,pcktaken,tamount,expiry FROM  affiliateuser where username = '$userid'";
 $result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result))
@@ -60,13 +60,13 @@ while($row = mysqli_fetch_array($result))
  $pck="$row[pcktaken]";
  $ear="$row[tamount]";
  $expiry="$row[expiry]";
- 
+
 }
 
 //Fetching new package id from paypalayment table to upgrade new package
 
 
-$query222 ="SELECT * FROM paypalpayments WHERE orderid='$aid' and renew=1"; 
+$query222 ="SELECT * FROM paypalpayments WHERE orderid='$aid' and renew=1";
 $result222 = mysqli_query($con,$query222);
 
 while($row = mysqli_fetch_array($result222))
@@ -75,9 +75,9 @@ while($row = mysqli_fetch_array($result222))
  }
 
 //end
- 
-$query="SELECT * FROM  packages where id = $newpackageid"; 
- 
+
+$query="SELECT * FROM  packages where id = $newpackageid";
+
 $result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result))
@@ -91,7 +91,7 @@ while($row = mysqli_fetch_array($result))
 	$total=$pprice+$ptax;
 	$noofdays="$row[validity]";
 // "<option value='$id'>$pname | Price - $pcur $total </option>";
-  
+
   }
 
 $result=mysqli_query($con,"UPDATE paypalpayments SET renew=2 WHERE orderid='$aid' and renew=1");

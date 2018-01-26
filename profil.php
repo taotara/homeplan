@@ -477,10 +477,13 @@
                       <label>E-Mail</label>
                       <input type="text" value="<?php print $email?>" class="form-control" placeholder="Full Name" name="email" required>
                   </fieldset>
-     					  </br>
+                          </br>
+                          <b>Next Of Kin. </b>
+                        </br>
+                        </br>
      					  <b>Update Your Bank Details. </b>
-     					  <br>
-     					  <br>
+                        </br>
+                        </br>
      					  <fieldset class="form-group">
                   <label>Account Type</label>
                   <select name="acctype" required>

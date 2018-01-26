@@ -64,6 +64,14 @@ $msg=$msg."Userid Already Exists. Please Try Another One.<BR>";
 $status= "NOTOK";
 }
 
+$rf=mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE referedby = '$ref'");
+$r2 = mysqli_fetch_row($rf);
+$nr2 = $r2[0];
+if($nr2==3){
+$msg=$msg."Sponsor Already Had 3 Downlines (Maximum no of Downlines). Please Try Another Sponsor.<BR>";
+$status= "NOTOK";
+}
+
 /*
 $rrr=mysqli_query($con,"SELECT COUNT(*) FROM affiliateuser WHERE mobile = '$mobile'");
 $r3 = mysqli_fetch_row($rrr);

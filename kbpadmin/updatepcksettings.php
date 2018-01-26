@@ -1,7 +1,7 @@
 <?php
 header( "refresh:3;url=pacsettings.php" );
 session_start(); //starting session
-include('z_db.php'); //connection details
+include_once ("../includes/connector.php"); //connection details
 $status = "OK"; //initial status
 $msg="";
 $pname=mysqli_real_escape_string($con,$_POST['pckname']); //fetching details through post method
@@ -58,11 +58,11 @@ print "error!!!! try again later or ask for help from your administrator!!!! Red
 }
 
 
-} 
+}
 else {
-        
+
 echo "<font face='Verdana' size='2' color=red>$msg</font><br><input type='button' value='Retry' onClick='history.go(-1)'>"; //printing errors
-	 
+
 }
 
 ?>

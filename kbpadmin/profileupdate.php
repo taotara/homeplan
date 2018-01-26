@@ -1,6 +1,6 @@
 <?php
 header( "refresh:3;url=profile.php" );
-include_once("z_db.php");// database connection details stored here
+include_once ("../includes/connector.php");// database connection details stored here
 // Inialize session
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -12,7 +12,7 @@ if (!isset($_SESSION['adminidusername'])) {
 			";
 }
 
-// Collect the data from post method of form submission // 
+// Collect the data from post method of form submission //
 $name=mysqli_real_escape_string($con,$_POST['fullname']);
 $emaill=mysqli_real_escape_string($con,$_POST['email']);
 $addrs=mysqli_real_escape_string($con,$_POST['address']);
@@ -40,7 +40,7 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, multilanguagePage: true}, 'google_translate_element');
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        
+
 </head>
 <?php
 $check=1;
@@ -53,7 +53,7 @@ $msg="";
 
 if ( strlen($p1) < 8 ){
 $msg=$msg."Password Must Be More Than 8 Char Length.<BR>";
-$status= "NOTOK";}	
+$status= "NOTOK";}
 
 if ( strlen($cntry) < 2 ){
 $msg=$msg."Country Must Be More Than 2 Char Length.<BR>";
@@ -69,7 +69,7 @@ $status= "NOTOK";}
 
 if (!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $emaill)){
 $msg=$msg."Email Id Not Valid, Please Enter The Correct Email Id. This id will be used in case of recovering of password<BR>";
-$status= "NOTOK";}	
+$status= "NOTOK";}
 
 if ( strlen($p2) < 8 ){
 $msg=$msg."Password Must Be More Than 8 Char Length.<BR>";
@@ -80,7 +80,7 @@ $msg=$msg."Name should contain 2 chars.<BR>";
 $status= "NOTOK";}
 }
 
-if ($status=="OK") 
+if ($status=="OK")
 {
 
 $query=mysqli_query($con,"update affiliateuser set password='$p1',fname='$name',email='$emaill',country='$cntry',address='$addrs',bankname='$bankname',accountname='$accname',accountno='$accno',accounttype='$acctype',ifsccode='$ifsccode' where username='".$_SESSION['adminidusername']."'");
@@ -94,9 +94,9 @@ print "updated....!!! Redirecting...";
 
 
 else
-{ 
+{
 echo "<font face='Verdana' size='2' color=red>$msg</font><br><input type='button' value='Retry' onClick='history.go(-1)'>"; //printing error if found in validation
 }
 
-?> 
+?>
 </html>

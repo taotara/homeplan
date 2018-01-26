@@ -1,6 +1,6 @@
 <?php
 header( "refresh:1;url=gensettings.php" );
-include('z_db.php'); //connection details
+include_once ("../includes/connector.php"); //connection details
 $status = "OK"; //initial status
 $msg="";
  //fetching details through post method
@@ -67,11 +67,11 @@ print "error!!!! try again later or ask for help from your administrator!!!! Red
 }
 
 
-} 
+}
 else {
-        
+
 echo "<font face='Verdana' size='2' color=red>$msg</font><br><input type='button' value='Retry' onClick='history.go(-1)'>"; //printing errors
-	 
+
 }
 
 ?>

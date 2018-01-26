@@ -1,5 +1,5 @@
 <?php
-include_once("z_db.php");// database connection details stored here
+include_once ("../includes/connector.php");// database connection details stored here
 // Collect the data from post method of form submission //
 $act=mysqli_real_escape_string($con,$_POST['act']);
 $username=mysqli_real_escape_string($con,$_POST['username']);

@@ -50,6 +50,18 @@
                 <li><a href="contact.php"><span class="lbl">Send Message</span></a></li>
             </ul>
         </li>
+        <li class="blue">
+            <a href="profile.php">
+                <i class="font-icon glyphicon glyphicon-user"></i>
+                <span class="lbl">Profile</span>
+            </a>
+        </li>
+        <li class="blue">
+            <a href="logout.php">
+                <i class="font-icon glyphicon glyphicon-log-out"></i>
+                <span class="lbl">Logout</span>
+            </a>
+        </li>
 
     </ul>
 </nav>
